@@ -7,6 +7,7 @@ from cffm cimport cs_di, ffm_param
 from cpython.pycapsule cimport *
 
 from libc.stdlib cimport malloc, free
+from libc.stdio cimport printf
 from scipy.sparse import csc_matrix
 cimport numpy as np
 import numpy as np
@@ -109,6 +110,8 @@ def ffm_als_fit(fm, X, double[:] y):
         w = np.zeros(n_features, dtype=np.float64)
         V = np.zeros((fm.rank, n_features), dtype=np.float64)
 
+    printf("%f\n", V)
+    
     cffm.ffm_als_fit(&w_0, <double *> w.data, <double *> V.data,
                      pt_X, &y[0], pt_param)
     return w_0, w, V
