@@ -110,7 +110,7 @@ def ffm_als_fit(fm, X, double[:] y):
         w = np.zeros(n_features, dtype=np.float64)
         V = np.zeros((fm.rank, n_features), dtype=np.float64)
 
-    printf("%f\n", V)
+    print(V)
     
     cffm.ffm_als_fit(&w_0, <double *> w.data, <double *> V.data,
                      pt_X, &y[0], pt_param)
